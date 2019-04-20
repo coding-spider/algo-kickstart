@@ -37,6 +37,26 @@ class LinkedList {
     this.head = newNode;
   }
 
+  delete(value) {
+    if (!this.head) {
+      return;
+    }
+
+    if (value == this.head.value) {
+      this.head = this.head.next;
+      return;
+    }
+
+    let current = this.head;
+    while (current.next != null) {
+      if (current.next.value == value) {
+        current.next = current.next.next;
+        return;
+      }
+      current = current.next;
+    }
+  }
+
   toArray() {
     let nodes = [];
     let current = this.head;
@@ -55,4 +75,7 @@ linkedList.append(2);
 console.log(linkedList);
 
 linkedList.prepend(3);
+console.log(linkedList.toArray());
+
+linkedList.delete(2);
 console.log(linkedList.toArray());
