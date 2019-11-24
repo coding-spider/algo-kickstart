@@ -27,17 +27,35 @@ public class SinglyLinkedList {
     } else {
       this.tail.next = newNode;
       this.tail = newNode;
+      this.size++;
     }
   }
 
+  @Override
+  public String toString() {
+    StringBuilder newStringBuilder = new StringBuilder();
+    if (this.size != 0) {
+      Node currentNode = this.head;
+      while (currentNode != null) {
+        newStringBuilder.append(Integer.toString(currentNode.data));
+        if (currentNode.next != null) {
+          newStringBuilder.append(" -> ");
+        }
+        currentNode = currentNode.next;
+      }
+    }
+    return newStringBuilder.toString();
+  }
+
   public static void main(String[] args) {
-    System.out.println("This is main class of SinglyLinkedList!");
+    System.out.println("\n\nThis is main class of SinglyLinkedList!\n\n");
 
-    Node newNode = new Node(2);
-
-    System.out.println("Printing Node...");
-    System.out.println(newNode);
-
+    SinglyLinkedList newSinglyLinkedList = new SinglyLinkedList(3);
+    System.out.println(newSinglyLinkedList);
+    newSinglyLinkedList.append(2);
+    newSinglyLinkedList.append(6);
+    newSinglyLinkedList.append(8);
+    System.out.println(newSinglyLinkedList);
   }
 }
 
