@@ -31,6 +31,19 @@ public class SinglyLinkedList {
     }
   }
 
+  public void prepend(int data) {
+    Node newNode = new Node(data);
+    if (this.size == 0) {
+      this.head = newNode;
+      this.tail = newNode;
+      this.size++;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+      this.size++;
+    }
+  }
+
   @Override
   public String toString() {
     StringBuilder newStringBuilder = new StringBuilder();
@@ -55,6 +68,8 @@ public class SinglyLinkedList {
     newSinglyLinkedList.append(2);
     newSinglyLinkedList.append(6);
     newSinglyLinkedList.append(8);
+    newSinglyLinkedList.prepend(28);
+    newSinglyLinkedList.prepend(38);
     System.out.println(newSinglyLinkedList);
   }
 }
