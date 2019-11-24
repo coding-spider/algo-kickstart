@@ -44,6 +44,32 @@ public class SinglyLinkedList {
     }
   }
 
+  public void remove(int data) {
+    Node currentNode = this.head;
+
+    // if Linked List is empty
+    if (currentNode == null) {
+      return;
+    }
+
+    // if data to be removed exists on head node
+    if (currentNode.data == data) {
+      this.head = currentNode.next;
+      this.tail = currentNode.next;
+      return;
+    }
+
+    if (currentNode != null) {
+      while (currentNode.next != null) {
+        if (currentNode.next.data == data) {
+          currentNode.next = currentNode.next.next;
+        } else {
+          currentNode = currentNode.next;
+        }
+      }
+    }
+  }
+
   @Override
   public String toString() {
     StringBuilder newStringBuilder = new StringBuilder();
@@ -67,9 +93,13 @@ public class SinglyLinkedList {
     System.out.println(newSinglyLinkedList);
     newSinglyLinkedList.append(2);
     newSinglyLinkedList.append(6);
+    newSinglyLinkedList.append(6);
     newSinglyLinkedList.append(8);
     newSinglyLinkedList.prepend(28);
     newSinglyLinkedList.prepend(38);
+    System.out.println(newSinglyLinkedList);
+    System.out.println("Removing Data !\n\n");
+    newSinglyLinkedList.remove(6);
     System.out.println(newSinglyLinkedList);
   }
 }
